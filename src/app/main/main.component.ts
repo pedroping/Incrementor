@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
 })
-export class MainComponent {
-  incrementoControl = new FormControl(0, Validators.required)
-}
+export class MainComponent {}

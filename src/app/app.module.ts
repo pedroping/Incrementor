@@ -8,9 +8,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
 import { IconHarnessExample } from './incrementor/icon-harness-example';
+import { ShowIncrementorComponent } from './show-incrementor/show-incrementor.component';
+import { MainRoutingModule } from './main/main.routing.module';
 
 @NgModule({
-  declarations: [IconHarnessExample, MainComponent, MainComponent],
+  declarations: [IconHarnessExample, MainComponent, MainComponent, ShowIncrementorComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
@@ -19,6 +21,7 @@ import { IconHarnessExample } from './incrementor/icon-harness-example';
     MatNativeDateModule,
     MaterialExampleModule,
     ReactiveFormsModule,
+    MainRoutingModule
   ],
   bootstrap: [MainComponent],
 })
