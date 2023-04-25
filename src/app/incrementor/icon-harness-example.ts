@@ -1,7 +1,16 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
 import {
+  Component,
+  forwardRef,
+  Injector,
+  OnInit,
+  Optional,
+} from '@angular/core';
+import {
+  ControlContainer,
   ControlValueAccessor,
   FormControl,
+  FormGroup,
+  NgControl,
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 
@@ -23,10 +32,32 @@ import {
 export class IconHarnessExample implements ControlValueAccessor, OnInit {
   incrementorControl = new FormControl();
   disabled: boolean;
+  ngControl: NgControl;
+
   onChanged: (stars: number) => void;
   onTouched: () => void;
 
+  constructor(
+    @Optional() private controlContainer: ControlContainer,
+    private injector: Injector
+  ) {}
   ngOnInit() {
+    this.ngControl = this.injector.get(NgControl);
+
+    if (this.ngControl.control?.validator) {
+      this.incrementorControl.validator = this.ngControl.control.validator;
+    }
+
+    if (this.controlContainer) {
+      const formGroup = this.controlContainer.control as FormGroup;
+      const key = this.ngControl.name as keyof FormGroup;
+      formGroup.controls[key];
+      if (formGroup.controls[key]) {
+        this.incrementorControl.validator = formGroup.controls[key].validator;
+        this.incrementorControl.updateValueAndValidity();
+      }
+    }
+
     this.incrementorControl.valueChanges.subscribe((val) => {
       this.onChanged(val);
       this.onTouched();

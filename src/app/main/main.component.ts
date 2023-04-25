@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-main',
@@ -7,5 +7,5 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-  incrementoControl = new FormControl(0)
+  incrementoControl = new FormControl(0, Validators.required)
 }
