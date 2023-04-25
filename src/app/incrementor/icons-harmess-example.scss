@@ -1,0 +1,41 @@
+.Incrementor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  input{
+    height: 22px;
+    width: 25px;
+    text-align: center;
+  }
+  .Icon{
+    background-color: gray;
+  }
+  
+  .PlusIcon{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    position: relative;
+    left: 1px;
+  }
+
+  .MinusIcon {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    position: relative;
+    left: -1px;
+    mat-icon{
+      position: relative;
+      top: -5px;
+    }   
+  }
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
